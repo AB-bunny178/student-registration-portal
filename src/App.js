@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// ---------------------------
+// src/App.jsx
+// ---------------------------
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import CourseTypeManager from "./components/CourseTypeManager";
+import CourseManager from "./components/CourseManager";
+import CourseOfferingManager from "./components/CourseOfferingManager";
+import StudentRegistration from "./components/StudentRegistration";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div className="app">
+    <nav>
+      <Link to="/">Home</Link> | <Link to="/course-types">Course Types</Link> | <Link to="/courses">Courses</Link> | <Link to="/offerings">Offerings</Link> | <Link to="/register">Register</Link>
+    </nav>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/course-types" element={<CourseTypeManager />} />
+      <Route path="/courses" element={<CourseManager />} />
+      <Route path="/offerings" element={<CourseOfferingManager />} />
+      <Route path="/register" element={<StudentRegistration />} />
+    </Routes>
+  </div>
+);
 
 export default App;
+
